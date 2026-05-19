@@ -2,54 +2,54 @@
 
 ## Overview
 
-OpsTrack uses a simple three-layer architecture:
+OpsTrack uses a simple three-layer client-server architecture:
 
-```md
-React Frontend
-      ↓
-Spring Boot REST API
-      ↓
-PostgreSQL Database
-```
 The frontend is responsible for user interaction.
 The backend is responsible for business logic and API handling.
 The database is responsible for storing operational data.
 
+---
+
 ## Frontend
 
-The frontend will be built with React.
+Technology:
+- React
 
 Responsibilities:
+- Display assets and incidents
+- Create and update incidents
+- Show maintenance logs
+- Display operational status
 
-- Display assets, incidents, maintenance logs, and spare parts
-- Allow users to create and update incidents
-- Allow users to add maintenance logs
-- Show non-online assets and their open incidents
+---
 
 ## Backend
 
-The backend will expose REST APIs for the frontend.
+Technology:
+- Spring Boot
 
 Responsibilities:
+- REST API handling
+- Business logic
+- Workflow rule execution
+- Database access
+- Operational state management
 
-- Receive requests from the frontend
-- Validate input data
-- Apply workflow rules
-- Read and write data from the database
-- Return structured responses to the frontend
+---
 
 ## Database
 
-The database will use PostgreSQL.
+Technology:
+- PostgreSQL
 
 Responsibilities:
-
 - Store assets
 - Store incidents
 - Store maintenance logs
-- Store spare parts
-- Store spare part usage records
-- Preserve relationships between entities
+- Store spare part inventory
+- Maintain entity relationships
+
+---
 
 ## Data Flow Example
 
@@ -62,8 +62,21 @@ When a user creates a critical incident:
 - The backend stores the changes in the database.
 - The frontend receives the updated result and displays it to the user.
 
+---
+
 ## Current Scope
 
 The first implementation will focus on the backend and database.
-
 The frontend will be added after the core backend APIs are working.
+
+---
+
+## Planned Deployment
+
+Frontend
+↓
+Backend API
+↓
+PostgreSQL Database
+
+Docker deployment may be added in future versions.

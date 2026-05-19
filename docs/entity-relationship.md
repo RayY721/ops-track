@@ -12,7 +12,7 @@ Represents an abnormal event, failure, or issue linked to an asset.
 Represents one investigation, toubleshooting, repair attempt, or handover note related to an incident.
 
 ### SparePart
-Represents a physical spare part stored on site.
+Represents a type of spare part.
 
 ### SparePartUsage
 Represents the usage of a spare part during a maintenance action.
@@ -25,7 +25,5 @@ Incident 1 --- N MaintenanceLog
 MaintenanceLog 1 --- N SparePartUsage
 SparePart 1 --- N SparePartUsage
 
-1 type of SparePart --- N SparePartUsage
 One spare part type can be used in multiple maintenance logs.
-
 One maintenance log can use multiple spare parts.
