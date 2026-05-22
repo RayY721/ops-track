@@ -25,4 +25,14 @@ public class AssetController {
     public Asset createAsset(@RequestBody Asset asset) {
         return assetService.createAsset(asset);
     }
+
+    @GetMapping("/{id}")
+    public Asset getAssetById(@PathVariable Long id) {
+        return assetService.getAssetById(id);
+    }
+
+    @PatchMapping("/{id}")
+    public Asset updateAsset(@PathVariable Long id, @RequestBody Asset asset) {
+        return assetService.updateAsset(id, asset);
+    }
 }

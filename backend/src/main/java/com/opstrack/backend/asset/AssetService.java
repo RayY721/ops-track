@@ -19,4 +19,26 @@ public class AssetService {
         assets.add(asset);
         return asset;
     }
+
+    public Asset getAssetById(Long id) {
+        for (Asset asset : assets) {
+            if (asset.getId().equals(id)) {
+                return asset;
+            }
+        }
+        return null;
+    }
+
+    public Asset updateAsset(Long id, Asset updatedAsset) {
+        for (Asset asset : assets) {
+            asset.setAssetCode(updatedAsset.getAssetCode());
+            asset.setType(updatedAsset.getType());
+            asset.setStatus(updatedAsset.getStatus());
+            asset.setIpAddress(updatedAsset.getIpAddress());
+            asset.setLocation(updatedAsset.getLocation());
+            return asset;
+        }
+        return null;
+    }
+
 }
