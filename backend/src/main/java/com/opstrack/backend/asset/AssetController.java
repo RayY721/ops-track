@@ -2,6 +2,8 @@ package com.opstrack.backend.asset;
 
 import org.springframework.web.bind.annotation.*;
 
+import com.opstrack.backend.asset.dto.AssetCreateRequest;
+
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +24,8 @@ public class AssetController {
 	}
 
     @PostMapping
-    public Asset createAsset(@RequestBody Asset asset) {
-        return assetService.createAsset(asset);
+    public Asset createAsset(@RequestBody AssetCreateRequest request) {
+        return assetService.createAsset(request);
     }
 
     @GetMapping("/{id}")

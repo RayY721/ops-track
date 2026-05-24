@@ -2,6 +2,7 @@ package com.opstrack.backend.asset;
 
 import org.springframework.stereotype.Service;
 
+import com.opstrack.backend.asset.dto.AssetCreateRequest;
 import com.opstrack.backend.exception.AssetNotFoundException;
 
 // import java.util.ArrayList;
@@ -21,10 +22,17 @@ public class AssetService {
 		return assetRepository.findAll();
 	}
 
-    public Asset createAsset(Asset asset) {
+    public Asset createAsset(AssetCreateRequest request) {
         // asset.setId(nextId++);
         // assets.add(asset);
         // return asset;
+		Asset asset = new Asset();
+		asset.setAssetCode(request.getAssetCode());
+		asset.setType(request.getType());
+		asset.setStatus(request.getStatus());
+		asset.setIpAddress(request.getIpAddress());
+		asset.setLocation(request.getLocation());
+		
 		return assetRepository.save(asset);
     }
 
