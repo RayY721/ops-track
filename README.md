@@ -53,3 +53,6 @@ This project is also intended as a learning project for:
 - relational database modeling
 - scalable system architecture
 - frontend/backend integration
+
+## History
+Current version implemented the CRUD for asset. Basic http exceoption response is implemented. PostgreSQL is launched with docker. For the backend code, it has Asset, AssetController, AssetService and AssetRepository. Next step is add DTO, Data Transfer Object. 
