@@ -1,0 +1,14 @@
+services:
+  postgre:
+  image: postgres:17.0
+  container_name: opstrack-postgres
+  environment:
+    POSTGRES_DB: opstrack
+    POSTGRES_USER: opstrack
+    POSTGRES_PASSWORD: opstrack
+  posts:
+    - "5432:5432"
+  volumes:
+    - opstrack_postgres_data:/var/lib/postgresql/data
+volumes:
+  opstrack_postgres_data

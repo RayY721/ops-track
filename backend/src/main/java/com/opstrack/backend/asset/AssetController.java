@@ -16,10 +16,10 @@ public class AssetController {
         this.assetService = assetService;
     }
 
-    @GetMapping
-    public List<Asset> getAssets() {
-        return assetService.getAssets();
-    }
+	@GetMapping
+	public List<Asset> getAllAssets() {
+		return assetService.getAllAssets();
+	}
 
     @PostMapping
     public Asset createAsset(@RequestBody Asset asset) {
@@ -35,4 +35,5 @@ public class AssetController {
     public Asset updateAsset(@PathVariable Long id, @RequestBody Asset asset) {
         return assetService.updateAsset(id, asset);
     }
+
 }

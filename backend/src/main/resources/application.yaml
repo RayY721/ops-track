@@ -1,3 +1,13 @@
 spring:
   application:
     name: backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/opstrack
+    username: opstrack
+    password: opstrack
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
