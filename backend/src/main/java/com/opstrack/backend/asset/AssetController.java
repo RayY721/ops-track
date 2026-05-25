@@ -3,6 +3,7 @@ package com.opstrack.backend.asset;
 import org.springframework.web.bind.annotation.*;
 
 import com.opstrack.backend.asset.dto.AssetCreateRequest;
+import com.opstrack.backend.asset.dto.AssetResponse;
 
 //import java.util.ArrayList;
 import java.util.List;
@@ -19,22 +20,22 @@ public class AssetController {
     }
 
 	@GetMapping
-	public List<Asset> getAllAssets() {
+	public List<AssetResponse> getAllAssets() {
 		return assetService.getAllAssets();
 	}
 
     @PostMapping
-    public Asset createAsset(@RequestBody AssetCreateRequest request) {
+    public AssetResponse createAsset(@RequestBody AssetCreateRequest request) {
         return assetService.createAsset(request);
     }
 
     @GetMapping("/{id}")
-    public Asset getAssetById(@PathVariable Long id) {
+    public AssetResponse getAssetById(@PathVariable Long id) {
         return assetService.getAssetById(id);
     }
 
     @PatchMapping("/{id}")
-    public Asset updateAsset(@PathVariable Long id, @RequestBody Asset asset) {
+    public AssetResponse updateAsset(@PathVariable Long id, @RequestBody Asset asset) {
         return assetService.updateAsset(id, asset);
     }
 

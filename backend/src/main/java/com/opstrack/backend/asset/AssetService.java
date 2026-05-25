@@ -3,6 +3,7 @@ package com.opstrack.backend.asset;
 import org.springframework.stereotype.Service;
 
 import com.opstrack.backend.asset.dto.AssetCreateRequest;
+import com.opstrack.backend.asset.dto.AssetResponse;
 import com.opstrack.backend.exception.AssetNotFoundException;
 
 // import java.util.ArrayList;
@@ -14,15 +15,27 @@ public class AssetService {
     // private long nextId = 1;
 	private final AssetRepository assetRepository;
 
+	private AssetResponse toResponse(Asset asset) {
+		return new AssetResponse(
+				asset.getId(),
+				asset.getAssetCode(),
+				asset.getType(),
+				asset.getStatus(),
+				asset.getIpAddress(),
+				asset.getLocation()
+			);
+	}
+
 	public AssetService(AssetRepository assetRepository) {
 		this.assetRepository = assetRepository;
 	}
 
-	public List<Asset> getAllAssets() {
-		return assetRepository.findAll();
+	public List<AssetResponse> getAllAssets() {
+		return assetRepository.findAll().stream()
+				.map(this::toResponse).toList();
 	}
 
-    public Asset createAsset(AssetCreateRequest request) {
+    public AssetResponse createAsset(AssetCreateRequest request) {
         // asset.setId(nextId++);
         // assets.add(asset);
         // return asset;
@@ -32,11 +45,12 @@ public class AssetService {
 		asset.setStatus(request.getStatus());
 		asset.setIpAddress(request.getIpAddress());
 		asset.setLocation(request.getLocation());
-		
-		return assetRepository.save(asset);
+
+		Asset savedAsset = assetRepository.save(asset);
+		return toResponse(savedAsset);
     }
 
-	public Asset getAssetById(Long id) {
+	public AssetResponse getAssetById(Long id) {
 		// for (Asset asset : assets) {
 		//     if (asset.getId().equals(id)) {
 		//         return asset;
@@ -44,10 +58,10 @@ public class AssetService {
 		// }
 		// return null;
 		// return assetRepository.findById(id).orElse(null);
-		return assetRepository.findById(id).orElseThrow(() -> new AssetNotFoundException(id));
+		return toResponse(assetRepository.findById(id).orElseThrow(() -> new AssetNotFoundException(id)));
 	}
 
-	public Asset updateAsset(Long id, Asset updatedAsset) {
+	public AssetResponse updateAsset(Long id, Asset updatedAsset) {
 		// for (Asset asset : assets) {
 		//     asset.setAssetCode(updatedAsset.getAssetCode());
 		//     asset.setType(updatedAsset.getType());
@@ -66,8 +80,10 @@ public class AssetService {
 		asset.setIpAddress(updatedAsset.getIpAddress());
 		asset.setLocation(updatedAsset.getLocation());
 
-		return assetRepository.save(asset);
+		return toResponse(assetRepository.save(asset));
 	}
+
+
 
 
 }
