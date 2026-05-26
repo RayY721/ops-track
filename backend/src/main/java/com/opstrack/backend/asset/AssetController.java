@@ -1,5 +1,7 @@
 package com.opstrack.backend.asset;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.opstrack.backend.asset.dto.AssetCreateRequest;
@@ -26,8 +28,8 @@ public class AssetController {
 	}
 
     @PostMapping
-    public AssetResponse createAsset(@Valid @RequestBody AssetCreateRequest request) {
-        return assetService.createAsset(request);
+    public ResponseEntity<AssetResponse> createAsset(@Valid @RequestBody AssetCreateRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(assetService.createAsset(request));
     }
 
     @GetMapping("/{id}")
