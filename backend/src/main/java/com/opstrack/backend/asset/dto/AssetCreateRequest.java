@@ -1,8 +1,13 @@
 package com.opstrack.backend.asset.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class AssetCreateRequest {
+	@NotBlank
 	private String assetCode;
+	@NotBlank
 	private String type;
+	@NotBlank
 	private String status;
 	private String ipAddress;
 	private String location;

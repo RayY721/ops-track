@@ -29,7 +29,7 @@ public class AssetResponse {
 		return type;
 	}
 
-	public String getAStatus() {
+	public String getStatus() {
 		return status;
 	}
 

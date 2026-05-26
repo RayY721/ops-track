@@ -7,6 +7,7 @@ import com.opstrack.backend.asset.dto.AssetResponse;
 
 //import java.util.ArrayList;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/assets")
@@ -25,7 +26,7 @@ public class AssetController {
 	}
 
     @PostMapping
-    public AssetResponse createAsset(@RequestBody AssetCreateRequest request) {
+    public AssetResponse createAsset(@Valid @RequestBody AssetCreateRequest request) {
         return assetService.createAsset(request);
     }
 

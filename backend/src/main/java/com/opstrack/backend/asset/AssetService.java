@@ -36,10 +36,8 @@ public class AssetService {
 	}
 
     public AssetResponse createAsset(AssetCreateRequest request) {
-        // asset.setId(nextId++);
-        // assets.add(asset);
-        // return asset;
 		Asset asset = new Asset();
+
 		asset.setAssetCode(request.getAssetCode());
 		asset.setType(request.getType());
 		asset.setStatus(request.getStatus());
@@ -51,26 +49,11 @@ public class AssetService {
     }
 
 	public AssetResponse getAssetById(Long id) {
-		// for (Asset asset : assets) {
-		//     if (asset.getId().equals(id)) {
-		//         return asset;
-		//     }
-		// }
-		// return null;
-		// return assetRepository.findById(id).orElse(null);
 		return toResponse(assetRepository.findById(id).orElseThrow(() -> new AssetNotFoundException(id)));
 	}
 
 	public AssetResponse updateAsset(Long id, Asset updatedAsset) {
-		// for (Asset asset : assets) {
-		//     asset.setAssetCode(updatedAsset.getAssetCode());
-		//     asset.setType(updatedAsset.getType());
-		//     asset.setStatus(updatedAsset.getStatus());
-		//     asset.setIpAddress(updatedAsset.getIpAddress());
-		//     asset.setLocation(updatedAsset.getLocation());
-		//     return asset;
-		// }
-		// return null;
+
 		Asset asset = assetRepository.findById(id)
 				.orElseThrow(() -> new AssetNotFoundException(id));
 
@@ -82,8 +65,5 @@ public class AssetService {
 
 		return toResponse(assetRepository.save(asset));
 	}
-
-
-
 
 }
